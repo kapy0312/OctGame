@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊戲選角介面</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 加入 jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 角色選擇區域 -->
+        <div class="character-section">
+            <div class="character-grid" id="character-grid">
+                <!-- 角色方框將由JS動態生成 -->
+            </div>
+
+            <!-- 按鈕來隨機選角 -->
+            <button id="random-button">隨機選角</button>
+        </div>
+
+        <!-- 顯示選中的角色大圖 -->
+        <div class="character-info">
+            <img id="character-image" src="" alt="選中的角色圖示">
+            <div class="character-name" id="character-name">角色1</div>
+        </div>
+    </div>
+
+
+    <audio id="random-sound" src="music/音效1.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+
+</html>
