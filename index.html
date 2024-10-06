@@ -4,8 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>遊戲選角介面</title>
-    <link rel="stylesheet" href="style.css">
+    <title>錡陞夜夜秀</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            /* 底層背景圖片 */
+            background-image: url('img/Background1.png');
+            background-size: contain;
+            /* 使整張圖片入鏡 */
+            background-position: center;
+            /* 圖片在視窗中置中 */
+            background-repeat: no-repeat;
+            /* 不重複背景圖片 */
+            height: 100vh;
+            /* 使背景圖片的高度為視窗高度 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            /* 當圖片不覆蓋視窗全部時，用黑色背景填補 */
+        }
+
+        .btn {
+            display: inline-block;
+            position: absolute;
+            bottom: 20px;
+            /* 靠下的距離 */
+            left: 70%;
+            z-index: 1;
+            min-width: 200px;
+            background: #FFFFFF;
+            border: 2px solid goldenrod;
+            border-radius: 4px;
+            color: goldenrod;
+            font-size: 1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            overflow: hidden;
+            transition: 0.5s;
+            padding: 10px 20px;
+        }
+
+        .btn span {
+            position: absolute;
+            width: 25%;
+            height: 100%;
+            background-color: goldenrod;
+            transform: translateY(150%);
+            border-radius: 50%;
+            left: calc((var(--n) - 1) * 25%);
+            transition: 0.5s;
+            transition-delay: calc((var(--n) - 1) * 0.1s);
+            z-index: -1;
+        }
+
+        .btn:hover,
+        .btn:focus {
+            color: black;
+        }
+
+        .btn:hover span {
+            transform: translateY(0) scale(2);
+        }
+
+        .btn span:nth-child(1) {
+            --n: 1;
+        }
+
+        .btn span:nth-child(2) {
+            --n: 2;
+        }
+
+        .btn span:nth-child(3) {
+            --n: 3;
+        }
+
+        .btn span:nth-child(4) {
+            --n: 4;
+        }
+    </style>
     <!-- 引入 Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- 加入 jQuery -->
@@ -13,27 +94,10 @@
 </head>
 
 <body>
-    <div class="container">
-        <!-- 角色選擇區域 -->
-        <div class="character-section">
-            <div class="character-grid" id="character-grid">
-                <!-- 角色方框將由JS動態生成 -->
-            </div>
-
-            <!-- 按鈕來隨機選角 -->
-            <button id="random-button">隨機選角</button>
-        </div>
-
-        <!-- 顯示選中的角色大圖 -->
-        <div class="character-info">
-            <img id="character-image" src="" alt="選中的角色圖示">
-            <div class="character-name" id="character-name">角色1</div>
-        </div>
-    </div>
-
-
-    <audio id="random-sound" src="music/音效1.mp3"></audio>
-    <script src="script.js"></script>
+    <a href="RandomCast.html" class="btn">
+        開始
+        <span></span><span></span><span></span><span></span>
+    </a>
 </body>
 
 </html>

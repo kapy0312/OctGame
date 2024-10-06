@@ -21,14 +21,14 @@ const characters = [
     { id: 19, thumb: 'img/char/19.png', large: 'img/char/19.png', alt: '角色19' },
     { id: 20, thumb: 'img/char/20.png', large: 'img/char/20.png', alt: '角色20' },
 ];
-
-
 // 選中角色
+
 let selectedBox = null;
 const characterGrid = document.getElementById('character-grid');
 const characterImage = document.getElementById('character-image');
 const characterInfoName = document.getElementById('character-name');
 const randomSound = document.getElementById('random-sound');
+const selectedList = document.getElementById('selected-list');
 
 // 動態生成角色方框
 characters.forEach(character => {
@@ -45,6 +45,7 @@ characters.forEach(character => {
 
     // 點擊事件
     box.addEventListener('click', () => {
+        // selectCharacter(character);
         randomSound.currentTime = 0; // 確保音效從頭播放
         randomSound.play(); // 播放音效
 
@@ -101,5 +102,26 @@ document.getElementById('random-button').addEventListener('click', () => {
         characterImage.src = randomCharacter.large;
         characterImage.alt = `${randomCharacter.alt} 大圖`;
         characterInfoName.textContent = randomCharacter.alt;
+
+        // selectCharacter(characters[randomIndex]);
     }, 3000); // 3秒後停止
 });
+
+function selectCharacter(character) {
+    if (selectedBox) {
+        selectedBox.classList.remove('selected');
+    }
+
+    const selectedBox = document.querySelector(`.character-box[data-id="${character.id}"]`);
+    selectedBox.classList.add('selected');
+    
+    characterImage.src = character.large;
+    characterImage.alt = `${character.alt} 大圖`;
+    characterInfoName.textContent = character.alt;
+
+    // 新增選中的角色圖片到列表
+    const img = document.createElement('img');
+    img.src = character.thumb;
+    img.alt = character.alt;
+    selectedList.appendChild(img);
+}
