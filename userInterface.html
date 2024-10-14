@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>題號與選項</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            /* 確保寬度佔滿視窗 */
+            background-color: #f0f0f0;
+            /* 背景顏色 */
+            font-family: Arial, sans-serif;
+        }
+
+        .question {
+            font-size: 5vw;
+            /* 根據視窗寬度調整字體大小 */
+            margin-bottom: 2vh;
+            /* 根據視窗高度調整邊距 */
+            text-align: center;
+            /* 文字置中 */
+        }
+
+        .name-input {
+            display: flex;
+            /* 使用 Flexbox 使輸入框水平排列 */
+            justify-content: center;
+            /* 置中對齊 */
+            gap: 2vw;
+            /* 輸入框之間的間距 */
+            margin-bottom: 5vh;
+            /* 輸入框與選項的間距 */
+        }
+
+        .name-input input {
+            padding: 1vh;
+            font-size: 3vw;
+            /* 根據視窗寬度調整字體大小 */
+            width: 30%;
+            /* 控制每個輸入框的寬度 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            /* 輸入框圓角 */
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* 2x2 格式 */
+            gap: 5vw;
+            /* 選項間的間距，根據視窗寬度調整 */
+            width: 80%;
+            /* 控制選項區域的寬度 */
+        }
+
+        .option {
+            padding: 10vh;
+            /* 根據視窗高度調整內邊距 */
+            color: white;
+            /* 字體顏色 */
+            border: none;
+            border-radius: 10px;
+            /* 調整邊角圓弧 */
+            font-size: 4vw;
+            /* 根據視窗寬度調整字體大小 */
+            cursor: pointer;
+            /* 游標變為手形 */
+            transition: background-color 0.3s, box-shadow 0.3s, border 0.3s;
+            /* 添加過渡效果 */
+            width: 100%;
+            /* 按鈕寬度填滿父元素 */
+            height: 100%;
+            /* 按鈕高度填滿父元素 */
+        }
+
+        /* 每個選項的背景顏色 */
+        .option-a {
+            background-color: red;
+        }
+
+        .option-b {
+            background-color: blue;
+        }
+
+        .option-c {
+            background-color: green;
+        }
+
+        .option-d {
+            background-color: orange;
+        }
+
+        .option.active {
+            background-color: #000;
+            /* 被選中時的背景顏色 */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            /* 添加陰影 */
+            border: 3px solid #fff;
+            /* 增加邊框厚度 */
+        }
+
+        .option:hover {
+            opacity: 0.8;
+            /* 懸停時的透明度變化 */
+        }
+    </style>
+    <!-- 引入 Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 加入 jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="name-input">
+        <input type="text" id="number" placeholder="請輸入玩家編號">
+        <input type="text" id="name" placeholder="請輸入名字">
+        <div class="question">T：1</div>
+    </div>
+    <div class="options">
+        <button class="option option-a">選項 A</button>
+        <button class="option option-b">選項 B</button>
+        <button class="option option-c">選項 C</button>
+        <button class="option option-d">選項 D</button>
+    </div>
+
+    <script>
+        let google_apps_script_url = "https://script.google.com/macros/s/AKfycbxEoyNfpsHBz-DeYNZH3k5TCAjTS5Mp6ugPFe-t3MR0AgxeTbgz-hlNwcGVgLq7lQg2sA/exec";
+        var Index, strAnswer= "";
+
+        // 在網頁載入後每三秒執行一次 topicAnwser 函數
+        window.onload = function () {
+            Index = 1;
+            $('.question').text('T：' + Index);
+            setInterval(Updata, 1000); // 3000 毫秒 = 3 秒
+        };
+
+        // 獲取所有選項按鈕
+        const options = document.querySelectorAll('.option');
+
+        // 為每個按鈕添加點擊事件
+        options.forEach(option => {
+            option.addEventListener('click', function () {
+                // 移除所有按鈕的 active 類
+                options.forEach(opt => opt.classList.remove('active'));
+
+                // 將當前按鈕設為 active
+                this.classList.add('active');
+
+                // 在這裡可以添加其他邏輯，例如紀錄選擇的按鈕
+                strAnswer = this.textContent;
+                console.log(this.textContent + ' 被選擇了。');
+            });
+        });
+
+
+        function Updata() {
+            var DataArray = [3];  // 用一維陣列代替
+
+            if (($('#number').val().trim() != "") && ($('#name').val().trim() != "")) {
+                DataArray.push($('#number').val());
+                DataArray.push($('#name').val());
+
+                if (strAnswer === "選項 A")
+                    DataArray.push(0);
+                if (strAnswer === "選項 B")
+                    DataArray.push(1);
+                if (strAnswer === "選項 C")
+                    DataArray.push(2);
+                if (strAnswer === "選項 D")
+                    DataArray.push(3);
+                if (strAnswer === "")
+                    DataArray.push(99);
+            }
+            else
+            {
+                 DataArray = [1];
+            }
+
+
+            $.ajax({
+                url: google_apps_script_url,
+                type: 'POST',
+                dataType: 'text',
+                data: JSON.stringify({ DataArray: DataArray }),
+                contentType: 'text/plain; charset=utf-8',
+                success: function (data) {
+                    // console.log(data);
+
+                    // 將字串解析為物件
+                    let parsedData = JSON.parse(data);
+                    let currentIndex = parsedData[0][1];
+                    if (Index != currentIndex) {
+                        Index = currentIndex;
+                        $('.question').text('T：' + Index);
+                        $('.option').removeClass('active');
+                    }
+                },
+                error: function () {
+                    alert('Request Failed'); // 处理错误情况
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

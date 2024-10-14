@@ -135,5 +135,20 @@ body {
 }
 
 #random-button:hover {
-    background-color: #0056b3;
+    background-color: #a5c7eb;
+}
+
+#start-button {
+    padding: 20px 40px;
+    font-size: 32px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    color: #ff0073;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#start-button:hover {
+    background-color: #e09d9e;
 }

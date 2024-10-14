@@ -58,6 +58,8 @@ characters.forEach(character => {
         characterImage.src = character.large;
         characterImage.alt = `${character.alt} 大圖`;
         characterInfoName.textContent = character.alt;
+        // 在選擇角色時調用 updateThumbnail()
+        updateThumbnail(character.large);
     });
 });
 
@@ -78,7 +80,7 @@ document.getElementById('random-button').addEventListener('click', () => {
     const interval = setInterval(() => {
         // 移除之前的紅框
         if (currentBox) {
-            currentBox.classList.remove('selected'); 
+            currentBox.classList.remove('selected');
         }
 
         // 隨機選擇一個方框
@@ -103,7 +105,9 @@ document.getElementById('random-button').addEventListener('click', () => {
         characterImage.alt = `${randomCharacter.alt} 大圖`;
         characterInfoName.textContent = randomCharacter.alt;
 
-        // selectCharacter(characters[randomIndex]);
+        // 在選擇角色時調用 updateThumbnail()
+        updateThumbnail(randomCharacter.large);
+
     }, 3000); // 3秒後停止
 });
 
@@ -114,7 +118,7 @@ function selectCharacter(character) {
 
     const selectedBox = document.querySelector(`.character-box[data-id="${character.id}"]`);
     selectedBox.classList.add('selected');
-    
+
     characterImage.src = character.large;
     characterImage.alt = `${character.alt} 大圖`;
     characterInfoName.textContent = character.alt;
@@ -125,3 +129,18 @@ function selectCharacter(character) {
     img.alt = character.alt;
     selectedList.appendChild(img);
 }
+
+let currentChooseRoleIndex = 1;
+
+function updateThumbnail(src) {
+    if (currentChooseRoleIndex <= 8) {
+        const ChooseRole = document.getElementById(`ChooseRole${currentChooseRoleIndex}`);
+        ChooseRole.src = src;
+        currentChooseRoleIndex++;
+    }
+}
+
+document.getElementById("start-button").addEventListener("click", function() {
+    // 將此處的URL替換為你要載入的網頁
+    window.location.href = "game.html";
+});

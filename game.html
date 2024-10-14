@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>百萬問答題</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('img/Background4.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .quiz-container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            word-wrap: break-word;
+        }
+
+        .question {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .option-button {
+            padding: 10px;
+            background-color: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+
+        .option-button:hover {
+            background-color: #333;
+        }
+
+        .control-buttons {
+            margin-top: 20px;
+        }
+
+        .control-button {
+            padding: 10px 15px;
+            margin: 0 5px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #555;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        .control-button:hover {
+            background-color: #777;
+        }
+
+        .user-boxes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            flex-basis: 200px;
+        }
+
+        .user-box {
+            background-color: #444;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+    <!-- 引入 Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 加入 jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 問題和選項區 -->
+        <div class="quiz-container">
+            <div class="question" id="question">這裡顯示問題</div>
+            <div class="options">
+                <!-- <button class="option-button" onclick="selectAnswer(0)">選項A</button>
+            <button class="option-button" onclick="selectAnswer(1)">選項B</button>
+            <button class="option-button" onclick="selectAnswer(2)">選項C</button>
+            <button class="option-button" onclick="selectAnswer(3)">選項D</button> -->
+
+                <button class="option-button">選項A</button>
+                <button class="option-button">選項B</button>
+                <button class="option-button">選項C</button>
+                <button class="option-button">選項D</button>
+            </div>
+            <div class="control-buttons">
+                <button class="control-button" onclick="revealAnswer()">揭曉答案</button>
+                <button class="control-button" onclick="nextQuestion()">換下一題</button>
+                <button class="control-button" onclick="topicAnwser()">使用者答案</button>
+                <button class="control-button" onclick="resetGame()">重新開始</button>
+            </div>
+        </div>
+        <!-- 使用者選擇答案顯示區 -->
+        <div class="user-boxes">
+            <div class="user-box" id="user1">使用者 1：未選擇</div>
+            <div class="user-box" id="user2">使用者 2：未選擇</div>
+            <div class="user-box" id="user3">使用者 3：未選擇</div>
+            <div class="user-box" id="user4">使用者 4：未選擇</div>
+            <div class="user-box" id="user5">使用者 5：未選擇</div>
+            <div class="user-box" id="user6">使用者 6：未選擇</div>
+            <div class="user-box" id="user7">使用者 7：未選擇</div>
+            <div class="user-box" id="user8">使用者 8：未選擇</div>
+        </div>
+    </div>
+    <script src="script_game.js"></script>
+</body>
+
+</html>
