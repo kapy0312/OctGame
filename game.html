@@ -98,6 +98,36 @@
             text-align: center;
             border-radius: 5px;
         }
+
+        .score-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            /* 確保在最上層 */
+        }
+
+        .score-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            color: #000;
+            text-align: center;
+            /* width: 40%; 設定為螢幕寬度的 80% */
+            /* max-width: 600px; 設定最大寬度以防止過大 */
+        }
+
+        .close {
+            cursor: pointer;
+            float: right;
+            font-size: 20px;
+        }
     </style>
     <!-- 引入 Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -126,6 +156,7 @@
                 <button class="control-button" onclick="nextQuestion()">換下一題</button>
                 <button class="control-button" onclick="topicAnwser()">使用者答案</button>
                 <button class="control-button" onclick="resetGame()">重新開始</button>
+                <button class="control-button" onclick="showScores()">顯示分數</button> <!-- 新增按鈕 -->
             </div>
         </div>
         <!-- 使用者選擇答案顯示區 -->
@@ -140,6 +171,15 @@
             <div class="user-box" id="user8">使用者 8：未選擇</div>
         </div>
     </div>
+
+    <div id="scoreModal" class="score-modal" style="display: none;">
+        <div class="score-content">
+            <span class="close" onclick="closeScores()" style="font-size: 64px; cursor: pointer;">&times;</span>
+            <h2>參賽者分數</h2>
+            <div id="scoresContainer"></div>
+        </div>
+    </div>
+
     <script src="script_game.js"></script>
 </body>
 

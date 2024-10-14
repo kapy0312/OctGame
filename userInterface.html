@@ -133,7 +133,7 @@
     </div>
 
     <script>
-        let google_apps_script_url = "https://script.google.com/macros/s/AKfycbxEoyNfpsHBz-DeYNZH3k5TCAjTS5Mp6ugPFe-t3MR0AgxeTbgz-hlNwcGVgLq7lQg2sA/exec";
+        let google_apps_script_url = "https://script.google.com/macros/s/AKfycbzXlCaQcG0jB3yZGGhRcLQhhqkbLYMANodXEEVpEW0eKaw73e-v0Z-h6QEWdku4slXb3g/exec";
         var Index, strAnswer= "";
 
         // 在網頁載入後每三秒執行一次 topicAnwser 函數
@@ -170,15 +170,15 @@
                 DataArray.push($('#name').val());
 
                 if (strAnswer === "選項 A")
-                    DataArray.push(0);
+                    DataArray.push('A');
                 if (strAnswer === "選項 B")
-                    DataArray.push(1);
+                    DataArray.push('B');
                 if (strAnswer === "選項 C")
-                    DataArray.push(2);
+                    DataArray.push('C');
                 if (strAnswer === "選項 D")
-                    DataArray.push(3);
+                    DataArray.push('D');
                 if (strAnswer === "")
-                    DataArray.push(99);
+                    DataArray.push('');
             }
             else
             {
