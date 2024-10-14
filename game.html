@@ -23,6 +23,15 @@
             color: #fff;
         }
 
+        .qr-code {
+            position: absolute; /* 絕對定位 */
+            top: 20px; /* 距離上方的距離 */
+            right: 20px; /* 距離右側的距離 */
+            width: 100px; /* 寬度設為100px */
+            height: 100px; /* 高度設為100px */
+            z-index: 10; /* 確保在其他元素之上 */
+        }
+
         .container {
             display: flex;
             gap: 20px;
@@ -136,6 +145,8 @@
 </head>
 
 <body>
+    <img src="img/QRcode.png" alt="QR Code" class="qr-code"> <!-- QR Code 圖片 -->
+
     <div class="container">
         <!-- 問題和選項區 -->
         <div class="quiz-container">
