@@ -1,25 +1,25 @@
 // 角色圖片對應（縮圖和大圖）
 const characters = [
-    { id: 1, thumb: 'img/char/1.png', large: 'img/char/1.png', alt: '角色1' },
-    { id: 2, thumb: 'img/char/2.png', large: 'img/char/2.png', alt: '角色2' },
-    { id: 3, thumb: 'img/char/3.png', large: 'img/char/3.png', alt: '角色3' },
-    { id: 4, thumb: 'img/char/4.png', large: 'img/char/4.png', alt: '角色4' },
-    { id: 5, thumb: 'img/char/5.png', large: 'img/char/5.png', alt: '角色5' },
-    { id: 6, thumb: 'img/char/6.png', large: 'img/char/6.png', alt: '角色6' },
-    { id: 7, thumb: 'img/char/7.png', large: 'img/char/7.png', alt: '角色7' },
-    { id: 8, thumb: 'img/char/8.png', large: 'img/char/8.png', alt: '角色8' },
-    { id: 9, thumb: 'img/char/9.png', large: 'img/char/9.png', alt: '角色9' },
-    { id: 10, thumb: 'img/char/10.png', large: 'img/char/10.png', alt: '角色10' },
-    { id: 11, thumb: 'img/char/11.png', large: 'img/char/11.png', alt: '角色11' },
-    { id: 12, thumb: 'img/char/12.png', large: 'img/char/12.png', alt: '角色12' },
-    { id: 13, thumb: 'img/char/13.png', large: 'img/char/13.png', alt: '角色13' },
-    { id: 14, thumb: 'img/char/14.png', large: 'img/char/14.png', alt: '角色14' },
-    { id: 15, thumb: 'img/char/15.png', large: 'img/char/15.png', alt: '角色15' },
-    { id: 16, thumb: 'img/char/16.png', large: 'img/char/16.png', alt: '角色16' },
-    { id: 17, thumb: 'img/char/17.png', large: 'img/char/17.png', alt: '角色17' },
-    { id: 18, thumb: 'img/char/18.png', large: 'img/char/18.png', alt: '角色18' },
-    { id: 19, thumb: 'img/char/19.png', large: 'img/char/19.png', alt: '角色19' },
-    { id: 20, thumb: 'img/char/20.png', large: 'img/char/20.png', alt: '角色20' },
+    { id: 1, thumb: 'img/char/1.png', large: 'img/char/1.png', alt: '糸彔☀️' },
+    { id: 2, thumb: 'img/char/2.png', large: 'img/char/2.png', alt: '芮芮' },
+    { id: 3, thumb: 'img/char/3.png', large: 'img/char/3.png', alt: '❸ ❸ ฅ՞•ﻌ•՞ฅ' },
+    { id: 4, thumb: 'img/char/4.png', large: 'img/char/4.png', alt: '夫也葉' },
+    { id: 5, thumb: 'img/char/5.png', large: 'img/char/5.png', alt: '許曜顯' },
+    { id: 6, thumb: 'img/char/6.png', large: 'img/char/6.png', alt: 'Jing Ho' },
+    { id: 7, thumb: 'img/char/7.png', large: 'img/char/7.png', alt: '鄭丞棋-白熊' },
+    { id: 8, thumb: 'img/char/8.png', large: 'img/char/8.png', alt: '張洺洺' },
+    { id: 9, thumb: 'img/char/9.png', large: 'img/char/9.png', alt: 'X' },
+    { id: 10, thumb: 'img/char/10.png', large: 'img/char/10.png', alt: 'Chen' },
+    { id: 11, thumb: 'img/char/11.png', large: 'img/char/11.png', alt: '雪' },
+    { id: 12, thumb: 'img/char/12.png', large: 'img/char/12.png', alt: 'Huang Fu' },
+    { id: 13, thumb: 'img/char/13.png', large: 'img/char/13.png', alt: '陳泓嘉' },
+    { id: 14, thumb: 'img/char/14.png', large: 'img/char/14.png', alt: '廖恩祁' },
+    { id: 15, thumb: 'img/char/15.png', large: 'img/char/15.png', alt: '廖若羽' },
+    { id: 16, thumb: 'img/char/16.png', large: 'img/char/16.png', alt: '張育麟' },
+    { id: 17, thumb: 'img/char/17.png', large: 'img/char/17.png', alt: '🦖' },
+    { id: 18, thumb: 'img/char/18.png', large: 'img/char/18.png', alt: '王晴眉03' },
+    { id: 19, thumb: 'img/char/19.png', large: 'img/char/19.png', alt: '吳鎮安' },
+    { id: 20, thumb: 'img/char/20.png', large: 'img/char/20.png', alt: '魔法少女' },
 ];
 // 選中角色
 
@@ -71,10 +71,24 @@ document.getElementById('random-button').addEventListener('click', () => {
         box.classList.remove('selected');
     });
 
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    const randomCharacter = characters[randomIndex];
-    const randomBox = document.querySelector(`.character-box[data-id="${randomCharacter.id}"]`);
+    // const randomIndex = Math.floor(Math.random() * characters.length);
 
+    // 生成一個範圍在 0 到 cheatArray 長度之間的隨機索引
+    const randomIndex = Math.floor(Math.random() * cheatArray.length);
+    // 獲取對應的作弊INDEX
+    const cheatIndex = cheatArray[randomIndex];
+
+    var randomCharacter;
+    if (cheatArray.length > 0) {
+        randomCharacter = characters[cheatIndex];
+    }
+    else {
+        randomCharacter = characters[Math.floor(Math.random() * characters.length)];
+    }
+    const randomBox = document.querySelector(`.character-box[data-id="${randomCharacter.id}"]`);
+    // 從陣列中移除該元素
+    cheatArray.splice(randomIndex, 1);
+    
     // 隨機亮起的過程
     let currentBox = null;
     const interval = setInterval(() => {
@@ -98,6 +112,16 @@ document.getElementById('random-button').addEventListener('click', () => {
         if (currentBox) {
             currentBox.classList.remove('selected'); // 移除最後的紅框
         }
+
+        // 獲取作弊的INDEX
+        // const cheatIndex = cheatArray[currentChooseRoleIndex - 1]; // 從作弊陣列中選擇對應INDEX
+
+        // 根據作弊陣列中的值，選擇對應角色
+        // const finalCharacter = characters[cheatIndex];
+        // const finalBox = document.querySelector(`.character-box[data-id="${finalCharacter.id}"]`);
+        // finalBox.classList.add('selected'); // 在最終角色上添加紅框
+        // selectedBox = finalBox; // 更新已選擇的角色
+
         randomBox.classList.add('selected'); // 在最終角色上添加紅框
         selectedBox = randomBox; // 更新已選擇的角色
 
@@ -140,7 +164,10 @@ function updateThumbnail(src) {
     }
 }
 
-document.getElementById("start-button").addEventListener("click", function() {
+document.getElementById("start-button").addEventListener("click", function () {
     // 將此處的URL替換為你要載入的網頁
     window.location.href = "game.html";
 });
+
+// 存最後停止的INDEX的1維陣列（例如預設每位使用者的作弊值）
+const cheatArray = [3, 5, 7, 1, 2, 0, 6, 4]; // 根據實際需求修改
