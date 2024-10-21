@@ -24,12 +24,18 @@
         }
 
         .qr-code {
-            position: absolute; /* 絕對定位 */
-            top: 20px; /* 距離上方的距離 */
-            right: 20px; /* 距離右側的距離 */
-            width: 100px; /* 寬度設為100px */
-            height: 100px; /* 高度設為100px */
-            z-index: 10; /* 確保在其他元素之上 */
+            position: absolute;
+            /* 絕對定位 */
+            top: 20px;
+            /* 距離上方的距離 */
+            right: 20px;
+            /* 距離右側的距離 */
+            width: 100px;
+            /* 寬度設為100px */
+            height: 100px;
+            /* 高度設為100px */
+            z-index: 10;
+            /* 確保在其他元素之上 */
         }
 
         .container {
@@ -71,6 +77,13 @@
 
         .option-button:hover {
             background-color: #333;
+        }
+
+        .option-button img {
+            display: block;
+            /* 確保圖片顯示 */
+            visibility: visible;
+            /* 確保圖片可見 */
         }
 
         .control-buttons {
@@ -157,10 +170,19 @@
             <button class="option-button" onclick="selectAnswer(2)">選項C</button>
             <button class="option-button" onclick="selectAnswer(3)">選項D</button> -->
 
-                <button class="option-button">選項A</button>
-                <button class="option-button">選項B</button>
-                <button class="option-button">選項C</button>
-                <button class="option-button">選項D</button>
+                <button class="option-button">選項A
+                    <!-- <img id="optionImg1" src="img/題目/P2_1.png" alt="選項A" width="120" height="120"> -->
+                </button>
+                <button class="option-button">選項B
+                    <!-- <img id="optionImg2" src="img/題目/P2_2.png" alt="選項B" width="120" height="120"> -->
+                </button>
+                <button class="option-button">選項C
+                    <!-- <img id="optionImg3" src="img/題目/P2_3.png" alt="選項C" width="120" height="120"> -->
+                </button>
+                <button class="option-button">選項D
+                    <!-- <img id="optionImg4" src="img/題目/P2_4.png" alt="選項D" width="120" height="120"> -->
+                </button>
+
             </div>
             <div class="control-buttons">
                 <button class="control-button" onclick="revealAnswer()">揭曉答案</button>
@@ -190,7 +212,6 @@
             <div id="scoresContainer"></div>
         </div>
     </div>
-
     <script src="script_game.js"></script>
 </body>
 

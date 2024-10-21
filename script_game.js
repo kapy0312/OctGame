@@ -4,16 +4,16 @@ let score = 0;
 
 const questions = [
     { question: "問題 0.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'B' },
-    { question: "問題 1.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'C' },
-    { question: "問題 2.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'A' },
-    { question: "問題 3.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'D' },
-    { question: "問題 4.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'A' },
-    { question: "問題 5.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'C' },
+    { question: "題目 1：請問1+1=?", options: ["A:4", "B:999", "C:10", "D:2"], correct: 'D' },
+    { question: "題目 2：請問下列哪一位是釋迦", options: ["img/題目/P2_1.png", "img/題目/P2_2.png", "img/題目/P2_3.png", "img/題目/P2_4.png"], correct: 'B' },
+    { question: "題目 3：下列哪個英文句子是對的", options: ["A:I Don’t cake", "B:I Don’t care", "C:I Don’t car", "D:I Don’t cat"], correct: 'B' },
+    { question: "題目 4：快問快答限時10秒，78*87=?", options: ["A:6876", "B:5656", "C:6786", "D:6565"], correct: 'C' },
+    { question: "題目 5：請問下列哪一位不是錡陞學長", options: ["img/題目/P5_1.png", "img/題目/P5_2.png", "img/題目/P5_3.png", "img/題目/P5_4.png"], correct: 'A' },
     { question: "問題 6.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'A' },
-    { question: "問題 7.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'B' },
-    { question: "問題 8.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'D' },
+    { question: "問題 7.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'A' },
+    { question: "問題 8.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'A' },
     { question: "問題 9.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'A' },
-    { question: "問題 10.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'B' }
+    { question: "問題 10.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", options: ["選項A", "選項B", "選項C", "選項D"], correct: 'A' }
 ];
 
 // 在網頁載入後每三秒執行一次 topicAnwser 函數
@@ -27,9 +27,21 @@ function loadQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
     document.getElementById("question").textContent = currentQuestion.question;
     document.querySelectorAll(".option-button").forEach((button, index) => {
-        button.textContent = currentQuestion.options[index];
-        button.style.backgroundColor = "#1a1a1a"; // Reset button color
+        strAswer = currentQuestion.options[index];
+        if (isPath(strAswer)) {
+            button.innerHTML = (String.fromCharCode(65 + index) + ":") + `<img id="optionImg${index + 1}" src=${strAswer} alt="選項${String.fromCharCode(65 + index)}" width="240" height="240">`;
+            button.style.backgroundColor = "#1a1a1a"; // Reset button color
+        } else {
+            button.textContent = strAswer;
+            button.style.backgroundColor = "#1a1a1a"; // Reset button color
+        }
     });
+}
+
+function isPath(str) {
+    // 判斷字串是否包含 `/` 或 `\`，這是常見的路徑格式
+    // 也可以根據需求增加更多的判斷條件，例如檔案副檔名等
+    return str.includes('/') || str.includes('\\');
 }
 
 function revealAnswer() {
@@ -43,14 +55,16 @@ function revealAnswer() {
     document.querySelectorAll(".option-button")[correctIndex].style.backgroundColor = "#4CAF50"; // Highlight correct answer
 
     // 根據 Anwser_OX 更新每位使用者的底色
-    Anwser_OX.forEach((answer, index) => {
-        const userBox = document.getElementById(`user${index + 1}`);
-        if (answer) {
-            userBox.style.backgroundColor = "#4CAF50"; // 正確答案為綠色
-        } else {
-            userBox.style.backgroundColor = "#F44336"; // 錯誤答案為紅色
-        }
-    });
+    if (Anwser_OX && Anwser_OX.length > 0) {
+        Anwser_OX.forEach((answer, index) => {
+            const userBox = document.getElementById(`user${index + 1}`);
+            if (answer) {
+                userBox.style.backgroundColor = "#4CAF50"; // 正確答案為綠色
+            } else {
+                userBox.style.backgroundColor = "#F44336"; // 錯誤答案為紅色
+            }
+        });
+    }
 }
 
 function nextQuestion() {
@@ -78,7 +92,7 @@ function nextQuestion() {
                 document.querySelectorAll(".user-box").forEach(box => {
                     box.style.backgroundColor = ""; // 恢復原色
                 });
-                
+
                 loadQuestion();
             }
             // } else {
