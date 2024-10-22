@@ -1,25 +1,25 @@
 // 角色圖片對應（縮圖和大圖）
 const characters = [
-    { id: 1, thumb: 'img/char/1.png', large: 'img/char/1.png', alt: '糸彔☀️' },
-    { id: 2, thumb: 'img/char/2.png', large: 'img/char/2.png', alt: '芮芮' },
-    { id: 3, thumb: 'img/char/3.png', large: 'img/char/3.png', alt: '❸ ❸ ฅ՞•ﻌ•՞ฅ' },
-    { id: 4, thumb: 'img/char/4.png', large: 'img/char/4.png', alt: '夫也葉' },
+    { id: 1, thumb: 'img/char/1.png', large: 'img/char/1.png', alt: '廖若羽' },//O
+    { id: 2, thumb: 'img/char/2.png', large: 'img/char/2.png', alt: '魔法少女' },
+    { id: 3, thumb: 'img/char/3.png', large: 'img/char/3.png', alt: '❸ ❸ ฅ՞•ﻌ•՞ฅ' },//O
+    { id: 4, thumb: 'img/char/4.png', large: 'img/char/4.png', alt: 'Huang Fu' },
     { id: 5, thumb: 'img/char/5.png', large: 'img/char/5.png', alt: '許曜顯' },
     { id: 6, thumb: 'img/char/6.png', large: 'img/char/6.png', alt: 'Jing Ho' },
-    { id: 7, thumb: 'img/char/7.png', large: 'img/char/7.png', alt: '鄭丞棋-白熊' },
+    { id: 7, thumb: 'img/char/7.png', large: 'img/char/7.png', alt: '映菊Angela🦁' },//O
     { id: 8, thumb: 'img/char/8.png', large: 'img/char/8.png', alt: '張洺洺' },
     { id: 9, thumb: 'img/char/9.png', large: 'img/char/9.png', alt: 'X' },
     { id: 10, thumb: 'img/char/10.png', large: 'img/char/10.png', alt: 'Chen' },
     { id: 11, thumb: 'img/char/11.png', large: 'img/char/11.png', alt: '雪' },
-    { id: 12, thumb: 'img/char/12.png', large: 'img/char/12.png', alt: 'Huang Fu' },
+    { id: 12, thumb: 'img/char/12.png', large: 'img/char/12.png', alt: 'ღYu' },//O
     { id: 13, thumb: 'img/char/13.png', large: 'img/char/13.png', alt: '陳泓嘉' },
-    { id: 14, thumb: 'img/char/14.png', large: 'img/char/14.png', alt: '廖恩祁' },
-    { id: 15, thumb: 'img/char/15.png', large: 'img/char/15.png', alt: '廖若羽' },
-    { id: 16, thumb: 'img/char/16.png', large: 'img/char/16.png', alt: '張育麟' },
+    { id: 14, thumb: 'img/char/14.png', large: 'img/char/14.png', alt: '廖恩祁' },//O
+    { id: 15, thumb: 'img/char/15.png', large: 'img/char/15.png', alt: '糸彔☀️' },
+    { id: 16, thumb: 'img/char/16.png', large: 'img/char/16.png', alt: '張育麟' },//O
     { id: 17, thumb: 'img/char/17.png', large: 'img/char/17.png', alt: '🦖' },
     { id: 18, thumb: 'img/char/18.png', large: 'img/char/18.png', alt: '王晴眉03' },
     { id: 19, thumb: 'img/char/19.png', large: 'img/char/19.png', alt: '吳鎮安' },
-    { id: 20, thumb: 'img/char/20.png', large: 'img/char/20.png', alt: '魔法少女' },
+    { id: 20, thumb: 'img/char/20.png', large: 'img/char/20.png', alt: '芮芮' },//O
 ];
 // 選中角色
 
@@ -88,7 +88,7 @@ document.getElementById('random-button').addEventListener('click', () => {
     const randomBox = document.querySelector(`.character-box[data-id="${randomCharacter.id}"]`);
     // 從陣列中移除該元素
     cheatArray.splice(randomIndex, 1);
-    
+
     // 隨機亮起的過程
     let currentBox = null;
     const interval = setInterval(() => {
@@ -170,4 +170,4 @@ document.getElementById("start-button").addEventListener("click", function () {
 });
 
 // 存最後停止的INDEX的1維陣列（例如預設每位使用者的作弊值）
-const cheatArray = [3, 5, 7, 1, 2, 0, 6, 4]; // 根據實際需求修改
+const cheatArray = [0, 2, 6, 11, 13, 15, 19]; // 根據實際需求修改
