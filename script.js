@@ -5,7 +5,7 @@ const characters = [
     { id: 3, thumb: 'img/char/3.png', large: 'img/char/3.png', alt: '❸ ❸ ฅ՞•ﻌ•՞ฅ' },//O
     { id: 4, thumb: 'img/char/4.png', large: 'img/char/4.png', alt: 'Huang Fu' },
     { id: 5, thumb: 'img/char/5.png', large: 'img/char/5.png', alt: '許曜顯' },
-    { id: 6, thumb: 'img/char/6.png', large: 'img/char/6.png', alt: 'Jing Ho' },
+    { id: 6, thumb: 'img/char/6.png', large: 'img/char/6.png', alt: '祐典:夜露死苦' },
     { id: 7, thumb: 'img/char/7.png', large: 'img/char/7.png', alt: '映菊Angela🦁' },//O
     { id: 8, thumb: 'img/char/8.png', large: 'img/char/8.png', alt: '張洺洺' },
     { id: 9, thumb: 'img/char/9.png', large: 'img/char/9.png', alt: 'X' },
@@ -170,4 +170,4 @@ document.getElementById("start-button").addEventListener("click", function () {
 });
 
 // 存最後停止的INDEX的1維陣列（例如預設每位使用者的作弊值）
-const cheatArray = [0, 2, 6, 11, 13, 15, 19]; // 根據實際需求修改
+const cheatArray = [0, 2, 5, 6, 11, 13, 15, 19]; // 根據實際需求修改
