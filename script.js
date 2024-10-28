@@ -171,3 +171,4 @@ document.getElementById("start-button").addEventListener("click", function () {
 
 // 存最後停止的INDEX的1維陣列（例如預設每位使用者的作弊值）
 const cheatArray = [0, 2, 5, 6, 11, 13, 15, 19]; // 根據實際需求修改
+

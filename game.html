@@ -86,7 +86,7 @@
             /* 確保圖片可見 */
         }
 
-        .control-buttons {
+        /* .control-buttons {
             margin-top: 20px;
         }
 
@@ -100,6 +100,33 @@
             background-color: #555;
             color: #fff;
             transition: background-color 0.3s;
+        } */
+
+        .control-buttons {
+            margin-top: 20px;
+            display: flex;
+            /* 設置按鈕橫向排列 */
+            flex-wrap: wrap;
+            /* 若空間不足，允許按鈕換行 */
+            gap: 10px;
+            /* 控制按鈕之間的間距 */
+            justify-content: center;
+            /* 中央對齊 */
+        }
+
+        .control-button {
+            flex: 1 1 auto;
+            /* 讓按鈕寬度自適應 */
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #555;
+            color: #fff;
+            transition: background-color 0.3s;
+            min-width: 100px;
+            /* 設置按鈕的最小寬度，避免過小 */
         }
 
         .control-button:hover {
@@ -150,6 +177,13 @@
             float: right;
             font-size: 20px;
         }
+
+        .timer-container {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #fff;
+        }
     </style>
     <!-- 引入 Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -190,6 +224,13 @@
                 <button class="control-button" onclick="topicAnwser()">使用者答案</button>
                 <button class="control-button" onclick="resetGame()">重新開始</button>
                 <button class="control-button" onclick="showScores()">顯示分數</button> <!-- 新增按鈕 -->
+            </div>
+
+
+            <!-- 倒數計時器區域 -->
+            <div class="timer-container">
+                <span id="countdown" style="font-size: 24px;">10</span> 秒
+                <button class="control-button" onclick="startTimer()">開始計時</button>
             </div>
         </div>
         <!-- 使用者選擇答案顯示區 -->

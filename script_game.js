@@ -25,9 +25,15 @@ window.onload = function () {
 
 function loadQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
+
+    if (currentQuestion === "題目 4：快問快答限時10秒，78*87=?") {
+        document.querySelector('.timer-container').style.display = 'block';
+    }
+
     document.getElementById("question").textContent = currentQuestion.question;
     document.querySelectorAll(".option-button").forEach((button, index) => {
         strAswer = currentQuestion.options[index];
+
         if (isPath(strAswer)) {
             button.innerHTML = (String.fromCharCode(65 + index) + ":") + `<img id="optionImg${index + 1}" src=${strAswer} alt="選項${String.fromCharCode(65 + index)}" width="240" height="240">`;
             button.style.backgroundColor = "#1a1a1a"; // Reset button color
@@ -239,3 +245,26 @@ function showScores() {
 function closeScores() {
     document.getElementById('scoreModal').style.display = 'none'; // 隱藏分數框
 }
+
+
+let countdownInterval;
+
+function startTimer() {
+    let timeLeft = 10; // 10秒倒數計時
+    document.getElementById("countdown").textContent = timeLeft;
+
+    // 清除先前的倒數計時器，避免重複啟動
+    clearInterval(countdownInterval);
+
+    countdownInterval = setInterval(function () {
+        timeLeft--;
+        document.getElementById("countdown").textContent = timeLeft;
+
+        // 當倒數結束時
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            alert("時間到！");
+        }
+    }, 1000);
+}
+
